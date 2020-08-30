@@ -5,18 +5,28 @@
 @import '../../tools/variables'
 @import '../../tools/colors'
 
-
+.card-flip
+  &--front,
+  &--back
+    @include location(13px, 23px, 554px, 370px)
+    background: var(--light)
+  
+  &--front
+    opacity: var(--visible-css)
+  &--back
+    opacity: var(--visible-image)
 
 /*  Pokemon Image */
 .img-base
   @include location(7px, 120px, 350px, 360px)
-  @include typeImage("Imagen")
+  //@include typeImage("Imagen")
   transform-origin: center center
   background-image: url($image)
   background-repeat: no-repeat
   background-size: 350px 360px
 
-.gengar
+.venusaur
   @include location(7px, 120px, 350px, 360px)
-  @include typeImage("CSS")
+  //@include typeImage("CSS")
+  
 
