@@ -8,7 +8,7 @@ const { CleanWebpackPlugin }    = require('clean-webpack-plugin');
 const MiniCssExtractPlugin      = require('mini-css-extract-plugin');
 
 const title                    = 'Pokemon CSS';
-const publicPath               = '/pokemon/venusaur/';
+const publicPath               = 'pokemon/venusaur/';
 const portServer               = 9000;
 
 module.exports = function (env) {
@@ -49,7 +49,7 @@ module.exports = function (env) {
         devServer: {
             contentBase: path.join(__dirname, 'dist'),
             compress: true,
-            publicPath: publicPath,
+            publicPath: '/'+publicPath,
             open: {
                 app: ['chrome', '--incognito', '--other-flag']
             },
