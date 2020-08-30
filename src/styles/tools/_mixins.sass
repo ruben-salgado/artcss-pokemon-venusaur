@@ -1,0 +1,36 @@
+@charset "utf-8"
+
+@use 'sass:map'
+
+
+
+@mixin position()
+  position: absolute
+
+@mixin location($top, $left, $width, $height)
+  @extend %position
+  top: $top
+  left: $left
+  height: $height
+  width: $width
+
+@mixin locationBottom($bottom, $left, $width, $height)
+  @extend %position
+  bottom: $bottom
+  left: $left
+  height: $height
+  width: $width
+
+@mixin typeImage($text)
+  & .img-type
+    &::before
+      content: $text
+      font-size: 19px
+      font-family: $font
+      position: absolute
+      color: var(--card-font-color)
+      width: 50px
+      height: 50px
+      right: -30px
+      top: 25px
+

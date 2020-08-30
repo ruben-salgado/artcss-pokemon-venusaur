@@ -1,0 +1,22 @@
+@charset "utf-8"
+
+@import '../../tools/mixins'
+@import '../../tools/functions'
+@import '../../tools/variables'
+@import '../../tools/colors'
+
+
+
+/*  Pokemon Image */
+.img-base
+  @include location(7px, 120px, 350px, 360px)
+  @include typeImage("Imagen")
+  transform-origin: center center
+  background-image: url($image)
+  background-repeat: no-repeat
+  background-size: 350px 360px
+
+.gengar
+  @include location(7px, 120px, 350px, 360px)
+  @include typeImage("CSS")
+

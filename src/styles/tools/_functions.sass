@@ -1,0 +1,21 @@
+@charset "utf-8"
+
+@use 'sass:map'
+
+
+
+%position
+  position: absolute
+
+%position-content
+  @extend %position
+  content: ""
+
+%shadow-card
+  position: absolute
+  box-shadow: 6px 8px 9px -6px rgba(0, 0, 0, 0.43)
+
+@function mapGet($map, $list...)
+  @each $key in $list
+    $map: map-get($map, $key)
+  @return $map

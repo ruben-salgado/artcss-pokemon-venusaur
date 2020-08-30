@@ -1,0 +1,15 @@
+-let card_info  = 'card-info'
+
+block content
+  div.card
+    div.card-flip
+      div.card-flip--inner
+        div.card-flip--front
+          include pokemon.pug
+        div.card-flip--back
+          div.img-base
+            div.img-type
+
+    div(class=card_info)
+      span(class=card_info+'__name') Pokemon
+      span(class=card_info+'__number' data='number')
