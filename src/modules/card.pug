@@ -1,4 +1,4 @@
--let card_info  = 'card-info'
+-const card_info  = 'card-info'
 
 block content
   div.card
@@ -11,5 +11,6 @@ block content
             div.img-type
 
     div(class=card_info)
-      span(class=card_info+'__name') Venusaur
-      span(class=card_info+'__number' data='003')
+      span(class=`${card_info}__name`) Venusaur
+      span(class=`${card_info}__number` data='003')
+

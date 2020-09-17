@@ -1,7 +1,7 @@
 {
-  "name": "gengar",
+  "name": "venusaur",
   "version": "1.0.0",
-  "description": "Dubijando a pokemon gengar con CSS",
+  "description": "Dubijando a pokemon venusaur con CSS",
   "main": "index.js",
   "scripts": {
     "build": "npm run clean && webpack --mode=development --watch",
