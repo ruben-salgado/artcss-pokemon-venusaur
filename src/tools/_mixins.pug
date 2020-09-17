@@ -1,0 +1,9 @@
+mixin nestedComponents(class_name, elements, sons)
+  each _, i in Array(elements)
+    div(class=`${class_name} ${class_name}--${i+1}`)
+      if sons
+        each son in sons
+          div(class=`${son}`)
+
+mixin components(class_name, elements)
+  +nestedComponents(class_name, elements, null)

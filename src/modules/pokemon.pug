@@ -1,0 +1,94 @@
+include ../tools/_mixins
+
+// Variables
+-const ear          = 'ear'
+-const eye          = 'eye'
+-const tooth        = 'tooth'
+-const nostrils     = 'nostrils'
+-const brand        = 'brand'
+-const foot         = 'foot__'
+-const claw         = 'claw'
+-const stigma       = 'stigma'
+-const leaf         = 'leaf'
+-const branch       = 'branch'
+-const cortex       = 'cortex'
+-const liana        = 'liana'
+-const petal        = 'petal'
+-const spike        = 'spike'
+-const spikelight   = 'spike-light'
+
+// Character
+div.venusaur
+  div.img-type
+  div.head
+    div.face
+      div.face--outline
+      div.face--inner
+        div.shadow
+    div.ears
+      +nestedComponents(ear, 2, ['ear--inner', 'light', 'shadow'])
+    div.eyes
+      +nestedComponents(eye, 2, ['pupil', 'eyelid'])
+    div.mouth
+      div.gum
+      div.tongue
+      div.teeth
+        +components(tooth, 6)
+    div.nose
+      div.lip
+      div.trademarks
+        +components(brand, 2)
+        div.brand--3
+      div.tip
+        +components(nostrils, 2)
+      div.light
+    div.flower
+      div.petals--outline
+      div.petals--inner
+        div.shadow
+  div.body
+  div.feet
+    div.spikes
+      +components(spike, 9)
+      div.light
+        +components(spikelight, 3)
+    div.left
+      each _, i in Array(2)
+        div(class=`${foot}left--outline ${foot}left--${i+1}`)
+        div(class=`${foot}left ${foot}left--${i+1}`)
+          if i===1
+            div.light
+          div.claws
+            +components(claw, 3)
+    div.right
+      each _, i in Array(2)
+        div(class=`${foot}right--outline ${foot}right--${i+1}`)
+        div(class=`${foot}right ${foot}right--${i+1}`)
+          div.shadow
+          div.claws
+            +components(claw, 3)
+  div.stigmas
+    +components(stigma, 4)
+  div.leaves
+    each _, i in Array(10)
+      div(class='segment--'+(i+1))
+        if i >= 5 && i !== 7
+          div(class=`${leaf} ${leaf}--${i+1}`) #[div.shadow--1] #[div.shadow--2] #[div.stem]
+        else if i >= 1 && i <= 3
+          div(class=`${leaf} ${leaf}--${i+1}`) #[div.shadow--3] #[div.stem]
+        else
+          div(class=`${leaf} ${leaf}--${i+1}`) #[div.stem]
+  div.trunk
+    div.bark
+      +components(cortex, 5)
+  div.branches
+    +components(branch, 3)
+  div.lianas
+    +nestedComponents(liana, 2, ['shadow'])
+  div.petals
+    each _, i in Array(4)
+      -let petal_number = `${petal}--${i+1}`
+      div(class=`segment-${petal_number}`)
+        div(class=`${petal}--outline ${petal_number}`)
+        div(class=`${petal} ${petal_number}`) #[div.bract]
+    

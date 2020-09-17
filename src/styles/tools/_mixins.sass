@@ -1,0 +1,117 @@
+@charset "utf-8"
+
+@use 'sass:map'
+
+
+
+@mixin position()
+  position: absolute
+
+@mixin location($top, $left, $width, $height)
+  @extend %position
+  top: $top
+  left: $left
+  height: $height
+  width: $width
+
+@mixin locationTopLeft($top, $left)
+  top: $top
+  left: $left
+
+@mixin locationBottom($bottom, $left, $width, $height)
+  @extend %position
+  bottom: $bottom
+  left: $left
+  height: $height
+  width: $width
+
+@mixin locationColor($top, $left, $width, $height, $color)
+  @include location($top, $left, $width, $height)
+  background: $color
+
+@mixin locationColorCircle($top, $left, $width, $height, $color)
+  @include locationColor($top, $left, $width, $height, $color)
+  border-radius: 50%
+
+@mixin typeImage($text)
+  & .img-type
+    &::before
+      content: $text
+      font-size: 19px
+      font-family: $font
+      position: absolute
+      color: var(--card-font-color)
+      width: 50px
+      height: 50px
+      right: -30px
+      top: 25px
+
+@mixin face($top, $left, $color)
+  @include locationColorCircle($top, $left, 111px, 80px, $color)
+  &::before
+    @include location(-13px, -10px, 138px, 80px)
+    content: ""
+    border-radius: 50%
+    border-top: 10px solid $color
+    border-bottom: 1px solid transparent
+    
+  &::after
+    @include locationColor(-13px, -15px, 147px, 80px, $color)
+    content: ""
+    clip-path: polygon(3% 45%, 10% 30%, 20% 18%, 45% 7%, 65% 7%, 85% 21%, 89% 25%, 97% 49%, 97% 56%, 96% 60%, 91% 70%, 82% 84%, 75% 92%, 25% 92%, 15% 87%, 9% 80%, 4% 67%, 2% 58%, 2% 52%)
+  
+@mixin flower($top, $left, $color)
+  @include location($top, $left, 24px, 57px)
+  transform: rotate(13deg)
+  &, &::before, &::after
+    border-radius: 15%
+    background: $color
+    content: ""
+  &::before
+    @include location(-10px, 2px, 21px, 74px)
+    transform: rotate(57deg)
+  &::after
+    @include location(-9px, 5px, 21px, 69px)
+    transform: rotate(106deg)
+
+@mixin animateHeight($name, $time, $prev, $next)
+  animation: #{$name} #{$time} infinite linear
+  @keyframes #{$name}
+    0%
+      height: $prev
+    80%
+      height: $prev
+    95%
+      height: $next
+
+@mixin animateTop($name, $time, $prev, $next)
+  animation: #{$name} #{$time} infinite linear
+  @keyframes #{$name}
+    0%
+      top: $prev
+    80%
+      top: $prev
+    95%
+      top: $next
+
+@mixin animateLeaf($number-leaf, $time, $prev-horizontal, $prev-rotate, $prev-w, $prev-h, $next-rotate)
+  $name: 'leaf-#{$number-leaf}'
+  animation: #{$name} #{$time} infinite linear
+  @keyframes #{$name}
+    0%
+      transform: scaleX($prev-horizontal) rotate(#{$prev-rotate}deg) scale($prev-w, $prev-h)
+    80%
+      transform: scaleX($prev-horizontal) rotate(#{$prev-rotate}deg) scale($prev-w, $prev-h)
+    95%
+      transform: scaleX($prev-horizontal) rotate(#{$next-rotate}deg) scale($prev-w, $prev-h)
+
+@mixin animateSegment($number-segment, $time, $prev-rotate, $next-rotate)
+  $name: 'segment-#{$number-segment}'
+  animation: #{$name} #{$time} infinite linear
+  @keyframes #{$name}
+    0%
+      transform: rotate(#{$prev-rotate}deg)
+    80%
+      transform: rotate(#{$prev-rotate}deg)
+    95%
+      transform: rotate(#{$next-rotate}deg)
